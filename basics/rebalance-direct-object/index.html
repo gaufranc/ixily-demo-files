@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade ideas / Launch widget from an object</title>
+
+
+    <!-- Importing the IXily widget .js file -->
+    <script src="https://ixily.io/assets/js/ixily-widget.min.js"></script>
+</head>
+<body>
+    <h3>
+        Rebalance widget from a passed object: this will launch the rebalance button and utilize the object passed.
+    </h3>
+
+    <p>Url to the docs: <a href="https://ixily.io/docs/portfolio-rebalance">https://ixily.io/docs/portfolio-rebalance</a></p>
+
+   
+
+     <p>Note that it is intended that this option is only used when a valid token is being passed.</p>
+
+     <p>Please update the html with your token from <a href="https://ixily.io/dashboard/developers">https://ixily.io/dashboard/developers</a> (View token)</p>
+
+     
+    <h3>Example</h3>
+    <!-- This div will be converted to the iframe/buttons. Important: the id of the element must be unique -->
+    <div id="ixily-widget-rebalance-direct"></div>
+
+
+    <!-- JS Script to use the imported .js file and launch the button -->
+    <script type="text/javascript">
+
+        // Declare a normal function
+        function createWidgetNormalRebalance(){
+
+        // Init
+        let widget;
+        widget = new IXilyWidget('');
+
+        // Width/height of the iframe, not the buttons.
+        const width = '420px';
+        const height = '200px';       
+
+        // Auth stuff - paste here your token 
+        const token = ''
+
+        // Rebalance details
+        // Please update as required
+        let rebalanceObject = [{
+            ticker: 'AAPL',
+            allocation: 10,
+            direction: 'long'
+        },
+        {
+            ticker: 'MSFT',
+            allocation: 25,
+            direction: 'long'
+        }]
+
+        // Public key to track and get paid
+        const publicKey = 'INSERT_YOUR_PUBLIC_KEY_HERE' // Please go here: https://ixily.io/dashboard/developers and copy your Key (not secret), paste it under publicKey.
+
+        // Settings of the widget
+        const widgetOrderSettings = {
+            authorization: {
+                type: 'oauth', // Either "token" for bearer, or "oauth" for oAuth.
+                token, 
+            },
+            payload: {
+                option: 'place_order',
+                data: {
+                    firstDisplay: 'rebalance',
+                    publicKey,
+                    rebalanceObject,        
+                },
+            },
+            styles: {
+                width,
+                height,
+            },
+            origin: window.location.origin || null,
+        };
+
+        // Simple function of the widget to initiate the iframe, we must send the ID of the html div we want to target.
+        widget.createWidget('ixily-widget-rebalance-direct', widgetOrderSettings);
+        }
+        createWidgetNormalRebalance();
+    </script>
+</body>
+</html>
