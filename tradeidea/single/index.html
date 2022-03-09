@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade ideas / Launch from a ticker trade idea reference</title>
+
+
+    <!-- Importing the IXily widget .js file -->
+    <script src="https://ixily.io/assets/js/ixily-widget.min.js"></script>
+</head>
+<body>
+    <h3>
+        Idea reference widget: this will launch the normal buttons and read the trade idea data.
+    </h3>
+
+    <p>Url to the docs: <a href="https://ixily.io/docs/order-widget">https://ixily.io/docs/order-widget</a></p>
+
+     
+
+     <p>Note that it is intended that this option is only used when a valid token is being passed.</p>
+
+     <p>Please update the html with your token from <a href="https://ixily.io/dashboard/developers">https://ixily.io/dashboard/developers</a> (View token)</p>
+
+     
+    <h3>Example</h3>
+    <!-- This div will be converted to the iframe/buttons. Important: the id of the element must be unique -->
+    <div id="ixily-widget-trade-idea"></div>
+
+
+    <!-- JS Script to use the imported .js file and launch the button -->
+    <script type="text/javascript">
+
+        // Declare a normal function
+        function createWidgetNormal(){
+
+        // Init
+        let widget;
+        widget = new IXilyWidget('');
+
+        // Width/height of the iframe, not the buttons.
+        const width = '420px';
+        const height = '200px';       
+
+        // Auth stuff - paste here your token 
+        const token = ''
+
+        // Trade idea config
+        // Please update as required
+        const recommendationReference = 'bca1068b4411e81020c8c2'; //Example link: https://ixily.io/ideas/idea/bca1068b4411e81020c8c2?status=Closed&assetNameStrip=Tesla%20Motors&ticker=TSLA&direction=long
+        const queryIdeaData = true;
+
+        // Public key to track and get paid
+        const publicKey = 'INSERT_YOUR_PUBLIC_KEY_HERE' // Please go here: https://ixily.io/dashboard/developers and copy your Key (not secret), paste it under publicKey.
+
+        // Settings of the widget
+        const widgetOrderSettings = {
+            authorization: {
+                type: 'oauth', // Either "token" for bearer, or "oauth" for oAuth.
+                token, 
+            },
+            payload: {
+                option: 'place_order',
+                data: {
+                    firstDisplay: 'open',
+                    publicKey,
+                    recommendationReference,
+                    queryIdeaData               
+                },
+            },
+            styles: {
+                width,
+                height,
+            },
+            origin: window.location.origin || null,
+        };
+
+        // Simple function of the widget to initiate the iframe, we must send the ID of the html div we want to target.
+        widget.createWidget('ixily-widget-trade-idea', widgetOrderSettings);
+        }
+        createWidgetNormal();
+    </script>
+</body>
+</html>
