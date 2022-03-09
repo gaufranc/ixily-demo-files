@@ -11,12 +11,11 @@
     <script src="https://ixily.io/assets/js/ixily-widget.min.js"></script>
 </head>
 <body>
-    <h1>
-        Step one - Simple basic usage: calling an idea, showing the buttons and track payment with your client ID
-    </h1>
+    <h4>
+        Step one - Simple basic embed of the widget and client configuration
+    </h4>
 
-     <!-- This div will be converted to the iframe/buttons. Important: the id of the element must be unique -->
-    <div id="ixily-widget-basic-usage"></div>
+    <p>Nothing shows at this stage, we've simply added the widget to the headers and have added our public key. It's deliberately simple.</p>
 
     <!-- JS Script to use the imported .js file and launch the button -->
     <script type="text/javascript">
@@ -35,29 +34,21 @@
             // Auth stuff - Nothing to see here yet 
             const token = '';
 
-            // Trade config
-            const ticker = 'AAPL'
-            const direction = 'buy';
-            const conviction = 100;
-
             // Public key to track and get paid
             const publicKey = 'INSERT_YOUR_PUBLIC_KEY_HERE' // Please go here: https://ixily.io/dashboard/developers and copy your Key (not secret), paste it under publicKey.
 
             // Settings of the widget
             const widgetOrderSettings = {
                 authorization: {
-                    type: 'token', // In this example, we're using the current logged user in ixily.io, therefore, we need to send "token".
-                    token, // In this example, we pass token empty since we're grabbing the current logged user in ixily.io.
+                    type: 'token', // Not required for this example
+                    token, // Not required for this example
                 },
                 payload: {
                     option: 'place_order',
                     data: {
-                        firstDisplay: 'open',
+                        firstDisplay: 'no_order', // Not required for this example
                         publicKey,
-                        showTooltip: false,
-                        ticker,
-                        conviction,
-                        direction
+                        showTooltip: false, // Not required for this example
                     },
                 },
                 styles: {
@@ -66,11 +57,8 @@
                 },
                 origin: window.location.origin || null,
             };
-
-            // Simple function of the widget to initiate the iframe, we must send the ID of the html div we want to target.
-            widget.createWidget('ixily-widget-basic-usage', widgetOrderSettings);
         }
-        createWidgetNormal();
+        // createWidgetNormal();
     </script>
 </body>
 </html>
