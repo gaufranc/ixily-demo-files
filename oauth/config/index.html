@@ -14,12 +14,26 @@
         Step one - Simple basic embed of the widget and client configuration
     </h4>
 
+    <p>The permission/user workflow differs depending on the user data that is provideded. The use cases include:</p>
+
+    <p>The easiest way to test the different use cases is to change the user object that's passed.  Note that if you connect a user profile, you'll need to disconnect it before you can connect it again i.e. connecting an already connected profile is a different use case.</p>
+
+    <p>All cases assume that the user is registered and authenticated in your application.</p>
+
+    <ul>
+        <li>User exists in IXily and is authenticated (on IXily) -> grants permission</li>
+        <li>User exists in IXily but is not authenticated (on IXily) -> must authenticate -> grants permission</li>
+        <li>User does not exist in IXily -> click to create profile (permission granted)</li>
+    </ul>
+
+    <p>Note the if there is a conflict between authenticated users (very likely to happen in development), the user is asked to re-authenticate. This may mean you are asked to re-authenticate more often that in reality.</p>
+
+    <h3>Unlinking YOUR user</h3>
+
+    <p>If you have connected your user profile, open the Trade Order Widget via ixily.io, select Connections from the left menu and remove the appropriate connection.</p>
+
     <div id="widget-oauth-basic"></div>
-
     
-
-    
-
     <!-- JS Script to use the imported .js file and launch the button -->
     <script type="text/javascript">
 
