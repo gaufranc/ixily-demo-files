@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step one | Aikido</title>
+
+
+    <!-- Importing the IXily widget .js file -->
+    <script src="https://ixily.io/assets/js/ixily-widget.min.js"></script>
+</head>
+<body>
+    <h1>
+        Step one - Simple basic usage: calling an idea, showing the buttons and track payment with your client ID
+    </h1>
+
+     <!-- This div will be converted to the iframe/buttons. Important: the id of the element must be unique -->
+    <div id="ixily-widget-basic-usage"></div>
+
+    <!-- JS Script to use the imported .js file and launch the button -->
+    <script type="text/javascript">
+
+        // Declare a normal function
+        function createWidgetNormal(){
+
+            // Init
+            let widget;
+            widget = new IXilyWidget('dev');
+
+            // Width/height of the iframe, not the buttons.
+            const width = '420px';
+            const height = '45px';       
+
+            // Auth stuff - Nothing to see here yet 
+            const token = ''
+
+            // Trade idea reference
+            const recommendationReference = 'bca1068b4411e81020c8c2' // Link to the idea: https://ixily.io/ideas/idea/bca1068b4411e81020c8c2?status=Closed&assetNameStrip=Tesla%20Motors&ticker=TSLA&direction=long
+            const queryIdeaData = true;
+
+            // Public key to track and get paid
+            const publicKey = 'INSERT_YOUR_PUBLIC_KEY_HERE' // Please go here: https://ixily.io/dashboard/developers and copy your Key (not secret), paste it under publicKey.
+
+            // Settings of the widget
+            const widgetOrderSettings = {
+                authorization: {
+                    type: 'token', // In this example, we're using the current logged user in ixily.io, therefore, we need to send "token".
+                    token, // In this example, we pass token empty since we're grabbing the current logged user in ixily.io.
+                },
+                payload: {
+                    option: 'place_order',
+                    data: {
+                        firstDisplay: 'open', // Displays the open part of the 
+                        recommendationReference,
+                        queryIdeaData,
+                        publicKey,
+                        showTooltip: false
+                    },
+                },
+                styles: {
+                    width,
+                    height,
+                },
+                origin: window.location.origin || null,
+            };
+
+            // Simple function of the widget to initiate the iframe, we must send the ID of the html div we want to target.
+            widget.createWidget('ixily-widget-basic-usage', widgetOrderSettings);
+        }
+
+
+        createWidgetNormal();
+    </script>
+</body>
+</html>
