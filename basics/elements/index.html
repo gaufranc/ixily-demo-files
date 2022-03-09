@@ -11,19 +11,31 @@
     <script src="https://ixily.io/assets/js/ixily-widget.min.js"></script>
 </head>
 <body>
-    <h1>
-        Step three - Multi Element Highlighting: this will highlight all the elements inside the page and launch the appropiate widget
-    </h1>
+    <h3>
+        Multi Element Highlighting: this will highlight all the elements inside the page and launch the appropiate widget
+    </h3>
 
-    <h3>Url to the docs: https://ixily.io/docs/highlight-restricted</h3>
+    <p>Url to the docs: <a href="https://ixily.io/docs/highlight-restricted">https://ixily.io/docs/highlight-restricted</a></p>
 
      <!-- This div will be converted to the iframe/buttons. Important: the id of the element must be unique -->
 
+     <p>Note that it is intended that this option is only used when a valid token is being passed.</p>
+
+     <p>Please update the html with your token from <a href="https://ixily.io/dashboard/developers">https://ixily.io/dashboard/developers</a> (View token)</p>
+
+     
+    <h3>Examples</h3>
+
      <p> HTML 'p' tag example:</p>
+    
      <p class="mt-4 mb-2 indenta padb" ticker="TSLA" id="we-share-the-same-id">P Tag that will display Tesla</p>
 
+     <p>&nbsp;</p>
+     
      <p> HTML 'button' tag example:</p>
      <button ticker="AAPL" id="we-share-the-same-id">This button will launch AAPL</button>
+
+     <p>&nbsp;</p>
 
      <p> HTML 'image' tag example:</p>
     <img src="https://pbs.twimg.com/profile_images/1481721031664422915/0gvJDUrd_400x400.png" ticker="MSFT" id="we-share-the-same-id" width="80px">
@@ -39,7 +51,7 @@
             widget = new IXilyWidget('');
 
             const tokenSelectTag = {
-                token: '',
+                token: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkYzBlNmRmOTgyN2EwMjA2MWU4MmY0NWI0ODQwMGQwZDViMjgyYzAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQ3luYW4gUmhvZGVzIiwicGljdHVyZSI6Imh0dHBzOi8vc3RvcmFnZS5nb29nbGVhcGlzLmNvbS9zdG9yYWdlLXVzZXItdXpzejFwOW1ubmswc2xnbmtibnpkdy81ODM3MTViMmU0M2M5MTM5MDYxOGEzLXByb2ZpbGUtcGljdHVyZSIsInN0YXR1czJGQSI6dHJ1ZSwicHJvZmlsZSI6eyJkYXRhUmVmZXJlbmNlIjoiMzNkZGIxNmQtNTNhZC00NmUxLTkyNDMtNGI0NmU4NTI0OGFlIiwicmVmZXJlbmNlIjoiVVpTejFwOW1ubmswc0xnTktiblpkdyIsIm5hbWUiOnsiZmlyc3ROYW1lIjoiQ3luYW4iLCJsYXN0TmFtZSI6IlJob2RlcyJ9LCJjb250YWN0Ijp7ImVtYWlsIjoiY3JAY3luYW5yaG9kZXMuY29tIiwicGhvbmUiOnsiY291bnRyeURpYWxDb2RlIjoiKzQ0IiwicGhvbmVOdW1iZXIiOiIwNzgwMTU1MTY5OCJ9fSwiY291bnRyeSI6IlVuaXRlZCBLaW5nZG9tIiwiY3VycmVuY3kiOnsiY29kZSI6IkdCUCIsInN5bWJvbCI6IsKjIn0sInByb2ZpbGUiOnsiaW1hZ2UiOiJodHRwczovL3N0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vc3RvcmFnZS11c2VyLXV6c3oxcDltbm5rMHNsZ25rYm56ZHcvNTgzNzE1YjJlNDNjOTEzOTA2MThhMy1wcm9maWxlLXBpY3R1cmUifSwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3N0b3JhZ2UtdXNlci11enN6MXA5bW5uazBzbGdua2JuemR3LzU4MzcxNWIyZTQzYzkxMzkwNjE4YTMtcHJvZmlsZS1waWN0dXJlIiwiYmlvIjoiQ28tZm91bmRlciBvZiBJWGlseSIsImNvbXBhbnkiOm51bGwsImFwcGxpY2FudElkIjoiYjVmNzc1NWMtZDYwNi00NGI4LTliMTUtMGQwNzYzNDlmMzkyIiwia3ljIjp7InBob3RvIjp0cnVlLCJwYXNzcG9ydCI6dHJ1ZSwicGVyc29uYWxEZXRhaWxzIjp0cnVlfSwidGhpcmRQYXJ0eUFjY291bnRzIjp7Inpvb20iOnRydWUsInN0b2NrdHdpdHMiOnRydWV9fSwiaXNEZXZlbG9wZXIiOnRydWUsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9pbnRlbnNlLWluZmVybm8tMzUzNSIsImF1ZCI6ImludGVuc2UtaW5mZXJuby0zNTM1IiwiYXV0aF90aW1lIjoxNjQ2MDUzMjc4LCJ1c2VyX2lkIjoiMzNkZGIxNmQtNTNhZC00NmUxLTkyNDMtNGI0NmU4NTI0OGFlIiwic3ViIjoiMzNkZGIxNmQtNTNhZC00NmUxLTkyNDMtNGI0NmU4NTI0OGFlIiwiaWF0IjoxNjQ2ODQxODMxLCJleHAiOjE2NDY4NDU0MzEsImVtYWlsIjoiY3JAY3luYW5yaG9kZXMuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiYXBwbGUuY29tIjpbIjAwMTU5MS4zNzk4MDJjMjZhNjU0OTU0YTZjMzBmNzEwMmY5YzZlYS4yMTQ2Il0sImZhY2Vib29rLmNvbSI6WyIxMDE1NzA0MDA2MTk4NTQ2MCJdLCJlbWFpbCI6WyJjckBjeW5hbnJob2Rlcy5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJhcHBsZS5jb20ifX0.nuSWqwUOCvR_Nrn3g-Z-0Hi9eZN5IK4Y9nRvmku4u1n5hbtBs5N-wsRE8lRNJbm_lPq-zmH4Gf-fu4UMIySV-6EX3t72urmdygeaXsTDad529UjC0Kgo4XUPB1NIgT_xjJ0aD3XKnguuLMEHBFyg8IFJkiOblKHc4vEpTMLGin3vElNOG9iFKkIlWcCeb2e8BBJ4N2vtRpvkjTnjDxAhix1OYhOPTzfBUeii_ov_L2_SgAlRO0J3MOT8pxVrD7BNR0onCzufhXjvqmcU6j8MwJWSQv-yG5Qzaeoy5YvAFF2zYRQ6eNuAnMpTR_kCP2LcT1ltI6TylgQ0j5CW6AEXmw',
                 type: 'token'
             };
             const ixilyIdSelector = 'we-share-the-same-id';
