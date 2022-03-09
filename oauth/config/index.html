@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oAuth / Config</title>
+
+    <!-- Importing the IXily widget .js file -->
+    <script src="https://ixily.io/assets/js/ixily-widget.min.js"></script>
+</head>
+<body>
+    <h4>
+        Step one - Simple basic embed of the widget and client configuration
+    </h4>
+
+    <div id="widget-oauth-basic"></div>
+
+    
+
+    
+
+    <!-- JS Script to use the imported .js file and launch the button -->
+    <script type="text/javascript">
+
+        // Declare a normal function
+        function createWidgetOAuth(){
+
+            // Init
+            let widget;
+            widget = new IXilyWidget('');
+
+            // Width/height of the iframe, not the buttons.
+            const width = '180px';
+            const height = '45px';
+            
+            // Client ID of the oAuthApp
+            const oAuthClientID = '035ae6824fa5ee0dc68e'
+
+            // Data to encrypt
+            let dataoAuthIxily = {
+                reference: "328d7153-26e4-4ad8-a029-3935e138fd9d",
+                first_name: "Conor",
+                last_name: "Naylor",
+                email: "conor@aikido.finance",
+                client_id: "035ae6824fa5ee0dc68e",
+                partner_name: "Aikido",
+            };
+
+            dataoAuthIxily = JSON.stringify(dataoAuthIxily);
+
+
+            // This is useful for them to access the stringified object and paste it in the next stackblitz (to encrypt)
+            console.log('------------');
+            console.log('Stringified object to paste in the encryption site: ', dataoAuthIxily);
+            console.log('------------');
+
+            // Now we encrypt the stringified object with CryptoJS AES encryption, using the oAuthApp secret. I used this web as sample: https://stackblitz.com/edit/cryptojs-aes-encrypt-decrypt
+            encryptedData = 'U2FsdGVkX1/QPo6/ZBXlR6VTrdX/OICa3AG6vYKACMFXkWbWypHpJu8X6HhhQDuIhRWT7mc7+ntrM4KMe4bA8K3T8mk0Y0RC7R89paO+ZVd39IxzmHr226d9JP2qBcssMw1uwfHvaKQye6VrqDmGL2ZjA1Um6fl3L/RGzpi9w0DZcAsd/juVTyMvho+HtFqqkmCnS5PPdlvh37GZGOqE7F2JoxDrcc9UgFX/tcGIKbQoBFmCIeuMxX3OIkTNHvRhbagsSJxsyy0jCjys0mLF8A=='
+
+
+            // Settings of the widget
+            const widgetOrderSettings = {
+                payload: {
+                    option: 'place_order',
+                    data: {
+                        firstDisplay: 'oauth_link',
+                        oAuthClientID,
+                        oAuthEncryptedIXilyData: encryptedData,
+                    },
+                },
+                styles: {
+                    width,
+                    height,
+                },
+                origin: window.location.origin || null,
+            };
+            widget.createWidget('widget-oauth-basic', widgetOrderSettings);
+        }
+
+        createWidgetOAuth();
+    </script>
+</body>
+</html>
