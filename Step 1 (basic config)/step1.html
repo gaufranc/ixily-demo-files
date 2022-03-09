@@ -17,9 +17,6 @@
 
     <p>Nothing shows at this stage, we've simply added the widget to the headers and have added our public key. It's deliberately simple.</p>
 
-     <!-- This div will be converted to the iframe/buttons. Important: the id of the element must be unique -->
-    <div id="ixily-widget-basic-usage"></div>
-
     <!-- JS Script to use the imported .js file and launch the button -->
     <script type="text/javascript">
 
@@ -43,18 +40,15 @@
             // Settings of the widget
             const widgetOrderSettings = {
                 authorization: {
-                    type: 'token', // In this example, we're using the current logged user in ixily.io, therefore, we need to send "token".
-                    token, // In this example, we pass token empty since we're grabbing the current logged user in ixily.io.
+                    type: 'token', // Not required for this example
+                    token, // Not required for this example
                 },
                 payload: {
                     option: 'place_order',
                     data: {
-                        firstDisplay: 'open',
+                        firstDisplay: 'no_order', // Not required for this example
                         publicKey,
-                        showTooltip: false,
-                        ticker,
-                        conviction,
-                        direction
+                        showTooltip: false, // Not required for this example
                     },
                 },
                 styles: {
@@ -63,13 +57,9 @@
                 },
                 origin: window.location.origin || null,
             };
-
-            // Simple function of the widget to initiate the iframe, we must send the ID of the html div we want to target.
-            // widget.createWidget('ixily-widget-basic-usage', widgetOrderSettings);
         }
 
-
-        createWidgetNormal();
+        // createWidgetNormal();
     </script>
 </body>
 </html>
