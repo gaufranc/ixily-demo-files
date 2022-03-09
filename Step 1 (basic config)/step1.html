@@ -26,18 +26,19 @@
 
             // Init
             let widget;
-            widget = new IXilyWidget('dev');
+            widget = new IXilyWidget('');
 
             // Width/height of the iframe, not the buttons.
             const width = '420px';
-            const height = '45px';       
+            const height = '250px';       
 
             // Auth stuff - Nothing to see here yet 
-            const token = ''
+            const token = '';
 
-            // Trade idea reference
-            const recommendationReference = 'bca1068b4411e81020c8c2' // Link to the idea: https://ixily.io/ideas/idea/bca1068b4411e81020c8c2?status=Closed&assetNameStrip=Tesla%20Motors&ticker=TSLA&direction=long
-            const queryIdeaData = true;
+            // Trade config
+            const ticker = 'AAPL'
+            const direction = 'buy';
+            const conviction = 100;
 
             // Public key to track and get paid
             const publicKey = 'INSERT_YOUR_PUBLIC_KEY_HERE' // Please go here: https://ixily.io/dashboard/developers and copy your Key (not secret), paste it under publicKey.
@@ -51,11 +52,12 @@
                 payload: {
                     option: 'place_order',
                     data: {
-                        firstDisplay: 'open', // Displays the open part of the 
-                        recommendationReference,
-                        queryIdeaData,
+                        firstDisplay: 'open',
                         publicKey,
-                        showTooltip: false
+                        showTooltip: false,
+                        ticker,
+                        conviction,
+                        direction
                     },
                 },
                 styles: {
