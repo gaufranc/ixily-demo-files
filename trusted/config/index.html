@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oAuth / Config</title>
+    <title>Trusted Partner Authentication / Config</title>
 
     <!-- Importing the IXily widget .js file -->
     <script src="https://ixily.io/assets/js/ixily-widget.min.js"></script>
@@ -21,9 +21,9 @@
     <p>All cases assume that the user is registered and authenticated in your application.</p>
 
     <ul>
-        <li>User exists in IXily and is authenticated (on IXily) -> grants permission</li>
-        <li>User exists in IXily but is not authenticated (on IXily) -> must authenticate -> grants permission</li>
-        <li>User does not exist in IXily -> click to create profile (permission granted)</li>
+        <li>1. User exists in IXily and is authenticated (on IXily) -> grants permission</li>
+        <li>2. User exists in IXily but is not authenticated (on IXily) -> must authenticate -> grants permission</li>
+        <li>3. User does not exist in IXily -> click to create profile (permission granted)</li>
     </ul>
 
     <p>Note the if there is a conflict between authenticated users (very likely to happen in development), the user is asked to re-authenticate. This may mean you are asked to re-authenticate more often that in reality.</p>
@@ -48,31 +48,30 @@
             const width = '180px';
             const height = '45px';
             
-            // Client ID of the oAuthApp
-            const oAuthClientID = '035ae6824fa5ee0dc68e'
-
             // Data to encrypt
             let dataoAuthIxily = {
-                reference: "328d7153-26e4-4ad8-a029-3935e138fd9d",
-                first_name: "Conor",
-                last_name: "Naylor",
-                email: "conor@aikido.finance",
-                client_id: "035ae6824fa5ee0dc68e",
-                partner_name: "Aikido",
+                reference: "",
+                first_name: "",
+                last_name: "",
+                email: "",
+                client_id: "",
+                partner_name: "",
             };
 
             dataoAuthIxily = JSON.stringify(dataoAuthIxily);
-
 
             // This is useful for them to access the stringified object and paste it in the next stackblitz (to encrypt)
             console.log('------------');
             console.log('Stringified object to paste in the encryption site: ', dataoAuthIxily);
             console.log('------------');
 
-            // Now we encrypt the stringified object with CryptoJS AES encryption, using the oAuthApp secret. I used this web as sample: https://stackblitz.com/edit/cryptojs-aes-encrypt-decrypt
-            // Secret of Aikido oAuth App = d3a745e0c3294c90f24b6025c3c78ec4bc860f4c (to use in the stackblitz as Key)
-            encryptedData = 'U2FsdGVkX1+u30/XY3egQPNWO4cuu50SDrP/V5w/8si0RItJTNqk5ehxpJfjbMN2keug5g4cZEFBOC/07TBH38eNoxY1hkKzJwRcpXnFPuL5FUqMgKD75PShfwyQsMXP3P2+MisZJ2vghaOLSrkCrbVynTjf4nfRzIWO2Bah2V9SI+zRl/k4WNcN5bR5RkFwtyprxodQ6dKjVX6V4i3NisV84UXkMHDQrgqEMkAt1nxeuJHTa8BtKR2PfmH9q846YZUJ6/FyouML1sK6U+iSfw=='
+            // Client ID of the oAuthApp
+            const oAuthClientID = ''; // client id
 
+            // Now we encrypt the stringified object with CryptoJS AES encryption, using the oAuthApp secret.
+            // I used this web as sample: https://stackblitz.com/edit/cryptojs-aes-encrypt-decrypt
+            
+            encryptedData = '';
 
             // Settings of the widget
             const widgetOrderSettings = {
