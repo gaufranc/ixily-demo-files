@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics / Ticker</title>
+
+
+    <!-- Importing the IXily widget .js file -->
+    <script src="https://ixily.io/assets/js/ixily-widget.min.js"></script>
+</head>
+<body>
+    <h4>
+        Launching the Widget for a Ticker
+    </h4>
+
+     <!-- This div will be converted to the iframe/buttons. Important: the id of the element must be unique -->
+    <div id="ixily-widget-basic-usage"></div>
+
+    <!-- JS Script to use the imported .js file and launch the button -->
+    <script type="text/javascript">
+
+        // Declare a normal function
+        function createWidgetNormal(){
+
+            // Init
+            let widget;
+            widget = new IXilyWidget('');
+
+            // Width/height of the iframe, not the buttons.
+            const width = '420px';
+            const height = '200px';       
+
+            // Auth stuff - Nothing to see here yet 
+            const token = ''
+
+            // Trade config
+            // Please update as required
+            const ticker = 'AAPL'
+            const direction = 'buy';
+            const conviction = 100;
+
+            // Public key to track and get paid
+            const publicKey = 'INSERT_YOUR_PUBLIC_KEY_HERE' // Please go here: https://ixily.io/dashboard/developers and copy your Key (not secret), paste it under publicKey.
+
+            // Settings of the widget
+            const widgetOrderSettings = {
+                authorization: {
+                    type: 'token', // Not required for this example
+                    token, // Not required for this example
+                },
+                payload: {
+                    option: 'place_order',
+                    data: {
+                        firstDisplay: 'open',
+                        publicKey,
+                        showTooltip: false,
+                        ticker,
+                        conviction,
+                        direction                   
+                    },
+                },
+                styles: {
+                    width,
+                    height,
+                },
+                origin: window.location.origin || null,
+            };
+
+            // Simple function of the widget to initiate the iframe, we must send the ID of the html div we want to target.
+            widget.createWidget('ixily-widget-basic-usage', widgetOrderSettings);
+        }
+
+
+        createWidgetNormal();
+    </script>
+</body>
+</html>
